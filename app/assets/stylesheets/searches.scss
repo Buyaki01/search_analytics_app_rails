@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.searchContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .searchHeading {
   text-align: center;
 }
@@ -20,4 +27,17 @@
 
 #submit {
   border-radius: 10px;
+}
+
+.searchAnalytics {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.searchAnalytics div {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
 }

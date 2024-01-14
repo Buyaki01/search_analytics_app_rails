@@ -1,21 +1,45 @@
-<h1 class="searchHeading">Wikipedia Search</h1>
+<div class="searchContainer">
+  <h1 class="searchHeading">Wikipedia Search</h1>
 
-<form>
-  <div class="searchForm">
-    <div>
-      <input type="text" id="search_query" name="search_query" className="border border-rose-500" autocomplete="off"/>
+  <form>
+    <div class="searchForm">
+      <div>
+        <input type="text" id="search_query" name="search_query" className="border border-rose-500" autocomplete="off"/>
+      </div>
+      <button type="submit" id="submit"> Submit </button>
     </div>
-    <button type="submit" id="submit"> Submit </button>
-  </div>
-</form>
+  </form>
 
-<% if @results_array.present? %>
-  <% @results_array.each do |result| %>
-    <div>
-      <h2><%= result[:title] %></h2>
-      <p><%= result[:text] %></p>
-    </div>
+  <% if @results_array.present? %>
+    <% @results_array.each do |result| %>
+      <div>
+        <h2><%= result[:title] %></h2>
+        <p><%= result[:text] %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p></p>
   <% end %>
-<% else %>
-  <p></p>
-<% end %>
+
+  <div class="searchAnalytics">
+    <div>
+      <h3>10 Most Searched Item Today</h3>
+      <% if @most_searched_today.present? %>
+        <ul>
+          <% @most_searched_today.each do |search_item| %>
+            <li><%= search_item %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches today.</p>
+      <% end %>
+    </div>
+    
+    <div>
+      <h3>10 Most Searched Item This Week</h3>
+    </div>
+    <div>
+      <h3>10 Most Searched Item This Month</h3>
+    </div>
+  </div>
+</div>
