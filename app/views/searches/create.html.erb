@@ -1,21 +1,64 @@
-<h1 class="searchHeading">Wikipedia Search</h1>
+<div class="searchContainer">
+  <h1 class="searchHeading">Wikipedia Search</h1>
 
-<form>
-  <div class="searchForm">
-    <div>
-      <input type="text" id="search_query" name="search_query" className="border border-rose-500" autocomplete="off"/>
+  <form id='search_form'>
+    <div class="searchForm">
+      <div>
+        <input type="text" id="search_query" name="search_query" className="border border-rose-500" autocomplete="off"/>
+      </div>
+      <button type="submit" id="submit"> Submit </button>
     </div>
-    <button type="submit" id="submit"> Submit </button>
-  </div>
-</form>
+  </form>
 
-<% if @results_array.present? %>
-  <% @results_array.each do |result| %>
-    <div>
-      <h2><%= result[:title] %></h2>
-      <p><%= result[:text] %></p>
-    </div>
+  <% if @results_array.present? %>
+    <% @results_array.each do |result| %>
+      <div>
+        <h2><%= result[:title] %></h2>
+        <p><%= result[:text] %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p></p>
   <% end %>
-<% else %>
-  <p></p>
-<% end %>
+
+  <div class="searchAnalytics">
+    <div>
+      <h3>10 Most Searched Today</h3>
+      <% if @most_searched_today.present? %>
+        <ul>
+          <% @most_searched_today.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches today.</p>
+      <% end %>
+    </div>
+
+    <div>
+      <h3>10 Most Searched Last 7 Days</h3>
+      <% if @most_searched_last_seven_days.present? %>
+        <ul>
+          <% @most_searched_last_seven_days.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches in the last 7 days.</p>
+      <% end %>
+    </div>
+
+    <div>
+      <h3>10 Most Searched Last Month</h3>
+      <% if @most_searched_last_month.present? %>
+        <ul>
+          <% @most_searched_last_month.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches last month.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
