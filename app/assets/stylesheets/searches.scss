@@ -1,0 +1,23 @@
+// Place all the styles related to the Searches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.searchHeading {
+  text-align: center;
+}
+
+.searchForm {
+ display: flex;
+ justify-content: center;
+ gap: 10px;
+}
+
+#search_query {
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+#submit {
+  border-radius: 10px;
+}
