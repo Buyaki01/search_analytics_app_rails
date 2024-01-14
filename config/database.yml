@@ -14,13 +14,13 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-
+ 
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: postgres
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: localhost
 
 development:

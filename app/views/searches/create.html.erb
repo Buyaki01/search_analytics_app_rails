@@ -23,23 +23,42 @@
 
   <div class="searchAnalytics">
     <div>
-      <h3>10 Most Searched Item Today</h3>
+      <h3>10 Most Searched Today</h3>
       <% if @most_searched_today.present? %>
         <ul>
-          <% @most_searched_today.each do |search_item| %>
-            <li><%= search_item %></li>
+          <% @most_searched_today.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
           <% end %>
         </ul>
       <% else %>
         <p>No searches today.</p>
       <% end %>
     </div>
-    
+
     <div>
-      <h3>10 Most Searched Item This Week</h3>
+      <h3>10 Most Searched Last 7 Days</h3>
+      <% if @most_searched_last_seven_days.present? %>
+        <ul>
+          <% @most_searched_last_seven_days.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches in the last 7 days.</p>
+      <% end %>
     </div>
+
     <div>
-      <h3>10 Most Searched Item This Month</h3>
+      <h3>10 Most Searched Last Month</h3>
+      <% if @most_searched_last_month.present? %>
+        <ul>
+          <% @most_searched_last_month.each do |search_item, count| %>
+            <li><%= "#{search_item} - searched <span class='count-bold'>#{count}</span> times".html_safe %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No searches last month.</p>
+      <% end %>
     </div>
   </div>
 </div>

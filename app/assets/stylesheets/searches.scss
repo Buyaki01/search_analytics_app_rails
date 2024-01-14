@@ -40,4 +40,15 @@
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
+
+  ul {
+    li {
+      margin-bottom: 10px;
+
+      .count-bold {
+        font-weight: bold;
+        font-size: large;
+      }
+    }
+  }
 }

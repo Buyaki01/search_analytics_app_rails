@@ -4,6 +4,8 @@ class SearchesController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   before_action :most_searched_today, only: [:create]
+  before_action :most_searched_last_seven_days, only: [:create]
+  before_action :most_searched_last_month, only: [:create]
 
   def create
     search_query = params[:search_query]
@@ -69,6 +71,21 @@ class SearchesController < ApplicationController
                                   .order('count_query DESC')
                                   .limit(10)
                                   .count(:query)
-                                  .keys
+  end
+
+  def most_searched_last_seven_days
+    @most_searched_last_seven_days = Search.where('created_at >= ?', 7.days.ago)
+                                        .group(:query)
+                                        .order('count_query DESC')
+                                        .limit(10)
+                                        .count(:query)
+  end
+
+  def most_searched_last_month
+    @most_searched_last_month = Search.where('extract(month from created_at) = ?', 1.month.ago.month)
+                                       .group(:query)
+                                       .order('count_query DESC')
+                                       .limit(10)
+                                       .count(:query)
   end
 end
