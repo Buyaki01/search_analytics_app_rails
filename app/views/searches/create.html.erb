@@ -8,3 +8,14 @@
     <button type="submit" id="submit"> Submit </button>
   </div>
 </form>
+
+<% if @results_array.present? %>
+  <% @results_array.each do |result| %>
+    <div>
+      <h2><%= result[:title] %></h2>
+      <p><%= result[:text] %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p></p>
+<% end %>
